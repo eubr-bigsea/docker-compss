@@ -1,27 +1,21 @@
-compss1:
-  image: guimaluf/compss
-  command: runcompss
-  volumes:
-    - ./projects:/opt/COMPSs/Runtime/configuration/xml/projects
-    - ./resources:/opt/COMPSs/Runtime/configuration/xml/resources
-  links:
-    - compss0
-    - compss2
-compss2:
-  image: guimaluf/compss
-  command: runcompss
-  volumes:
-    - ./projects:/opt/COMPSs/Runtime/configuration/xml/projects
-    - ./resources:/opt/COMPSs/Runtime/configuration/xml/resources
-  links:
-    - compss0
-    - compss1
 compss0:
-  image: guimaluf/compss
-  command: runcompss
+  image: bigsea/compss:latest
+  entrypoint: /usr/sbin/sshd -D
+compss1:
+  image: bigsea/compss:latest
+  entrypoint: /usr/sbin/sshd -D
+compss2:
+  image: bigsea/compss:latest
+  entrypoint: /usr/sbin/sshd -D
+compss-master:
+  image: bigsea/compss:latest
+  command: runcompss -m kmeans.KMeans -c 40 -i 100 -n 200000 -d 20 -f 4
   volumes:
-    - ./projects:/opt/COMPSs/Runtime/configuration/xml/projects
-    - ./resources:/opt/COMPSs/Runtime/configuration/xml/resources
+    - ./configuration:/opt/COMPSs/Runtime/configuration
+    - ./workspace/java/kmeans/jar:/var/workspace
+  ports:
+    - "8080:8080"
   links:
+    - compss0
     - compss1
     - compss2

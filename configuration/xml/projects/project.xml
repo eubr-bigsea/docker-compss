@@ -4,15 +4,15 @@
     <InstallDir>/opt/COMPSs/Runtime/scripts/system/</InstallDir>
     <WorkingDir>/tmp/localhost/</WorkingDir>
   </Worker>
+  <Worker Name="compss0">
+    <InstallDir>/opt/COMPSs/Runtime/scripts/system/</InstallDir>
+    <WorkingDir>/tmp/</WorkingDir>
+  </Worker>
   <Worker Name="compss1">
     <InstallDir>/opt/COMPSs/Runtime/scripts/system/</InstallDir>
     <WorkingDir>/tmp/</WorkingDir>
   </Worker>
   <Worker Name="compss2">
-    <InstallDir>/opt/COMPSs/Runtime/scripts/system/</InstallDir>
-    <WorkingDir>/tmp/</WorkingDir>
-  </Worker>
-  <Worker Name="compss3">
     <InstallDir>/opt/COMPSs/Runtime/scripts/system/</InstallDir>
     <WorkingDir>/tmp/</WorkingDir>
   </Worker>

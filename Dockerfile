@@ -1,4 +1,5 @@
 FROM compss/compss:1.3
+MAINTAINER Guilherme Maluf <guimalufb@gmail.com>
 
 VOLUME /opt/COMPSs/Runtime/configuration
 
@@ -16,7 +17,7 @@ WORKDIR /var/workspace
 ENV JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64/
 ENV PATH=$PATH:/opt/COMPSs/Runtime/scripts/user/
 
-EXPOSE "8080"
+EXPOSE "8080" "22"
 
 ADD entrypoint /usr/local/bin/
 
