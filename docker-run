@@ -1,0 +1,10 @@
+#!/bin/bash
+
+docker run -ti --rm -P                                           \
+  --volume=`pwd`/configuration:/opt/COMPSs/Runtime/configuration \
+  --volume=`pwd`/workspace/java:/var/workspace                   \
+  --volume=`pwd`/sharedDisk:/sharedDisk                          \
+  --add-host=compss1:172.17.0.11                                 \
+  --add-host=compss2:172.17.0.12                                 \
+  --add-host=compss3:172.17.0.13                                 \
+  guimaluf/compss

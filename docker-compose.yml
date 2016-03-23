@@ -1,0 +1,27 @@
+compss1:
+  image: guimaluf/compss
+  command: runcompss
+  volumes:
+    - ./projects:/opt/COMPSs/Runtime/configuration/xml/projects
+    - ./resources:/opt/COMPSs/Runtime/configuration/xml/resources
+  links:
+    - compss0
+    - compss2
+compss2:
+  image: guimaluf/compss
+  command: runcompss
+  volumes:
+    - ./projects:/opt/COMPSs/Runtime/configuration/xml/projects
+    - ./resources:/opt/COMPSs/Runtime/configuration/xml/resources
+  links:
+    - compss0
+    - compss1
+compss0:
+  image: guimaluf/compss
+  command: runcompss
+  volumes:
+    - ./projects:/opt/COMPSs/Runtime/configuration/xml/projects
+    - ./resources:/opt/COMPSs/Runtime/configuration/xml/resources
+  links:
+    - compss1
+    - compss2
