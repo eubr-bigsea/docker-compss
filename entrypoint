@@ -1,0 +1,5 @@
+#!/bin/sh
+/etc/init.d/compss-monitor start
+/etc/init.d/ssh start
+
+eval $*

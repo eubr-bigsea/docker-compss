@@ -1,4 +1,5 @@
 FROM compss/compss:1.3
+MAINTAINER Guilherme Maluf <guimalufb@gmail.com>
 
 VOLUME /opt/COMPSs/Runtime/configuration
 
@@ -14,14 +15,11 @@ VOLUME /var/workspace
 WORKDIR /var/workspace
 
 ENV JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64/
+ENV PATH=$PATH:/opt/COMPSs/Runtime/scripts/user/
 
-EXPOSE "8080"
+EXPOSE "8080" "22"
 
-#ENV DEBIAN_FRONTEND noninteractive
-#RUN apt-get update && apt-get install -y supervisor
-#ADD supervisor.conf /etc/supervisor/
+ADD entrypoint /usr/local/bin/
 
-#ENTRYPOINT ["/usr/bin/supervisord"]
-#CMD ["&&", "/bin/bash"]
-
-ENTRYPOINT /etc/init.d/compss-monitor start && service ssh start && bash
+ENTRYPOINT ["/usr/local/bin/entrypoint"]
+CMD ["/bin/bash"]
